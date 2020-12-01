@@ -5,17 +5,7 @@ from PIL import Image, ImageFont, ImageDraw
 # frame conversion algorithm
 print("conv.py name:", __name__)
 
-# scale factor
-scale = 15
-# dimensions of a character in pixels
-psi = 15
-
-# perceived brightness color values
-pr = 0.299
-pg = 0.587
-pb = 0.114
-
-def convert(im):
+def convert(im, scale, psi, pr, pg, pb):
     # calculate image scale factor
     dsize = int(im.shape[1] * scale / 100), int(im.shape[0] * scale / 100)
     owi, ohi = dsize[0]*psi,dsize[1]*psi
@@ -38,7 +28,7 @@ def convert(im):
             # np.array(c).clip(96,128)
 
             # write text to image
-            dw.text((x, y), xtext, (int((c[0] // 2) ** 1.3), int((c[1] // 2) ** 1.4), int((c[2] // 2) ** 1.5)), ImageFont.truetype('LucidaTypewriterRegular.ttf', psi))
+            dw.text((x, y), xtext, (int((c[0] // 2) ** 1.3), int((c[1] // 2) ** 1.4), int((c[2] // 2) ** 1.5)), ImageFont.truetype('lucida_typewriter_regular.ttf', psi))
             x += psi
         y += psi
     return np.array(img)
