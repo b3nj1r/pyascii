@@ -4,7 +4,7 @@ import cv2
 
 
 # scale factor
-scale = 10
+scale = 5
 # dimensions of a character in pixels
 psi = 15
 
@@ -33,16 +33,16 @@ for i in setup.vids:
     length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     # output file
-    out = cv2.VideoWriter('./out/out_{}.avi'.format(count),cv2.VideoWriter_fourcc(*'XVID'), 32, (owi, ohi))
+    out = cv2.VideoWriter('./out/out_{}.avi'.format(count),cv2.VideoWriter_fourcc(*'XVID'), 24, (owi, ohi))
     frame_count=0
     percentage=0
 
     while(cap.isOpened()):
         ret, frame = cap.read()
-        if(ret and (frame_count%5==0)):
+        if ret:
             out.write(conv.convert(frame,scale,psi,pr,pg,pb))
             print('file | {}\n'.format(i))
-            print('#'*(percentage//2))
+            print('#'*(percentage//2)+'.'*((100//2) - (percentage//2))
         frame_count+=1
         # print(frame_count)
         percentage = int((frame_count/length)*100)
