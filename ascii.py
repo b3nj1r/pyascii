@@ -1,3 +1,4 @@
 import conv
 import setup
-# parse args
+print(setup.imgs)
+print(setup.vids)
