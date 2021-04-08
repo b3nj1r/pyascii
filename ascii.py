@@ -3,7 +3,7 @@ import setup
 import cv2
 import numpy as np
 # scale factor
-scale = input("enter scale factor of the resulting files: ")
+scale = int(input("enter scale factor of the resulting files: "))
 # dimensions of a character in pixels
 psi = 15
 
